@@ -9,11 +9,11 @@ use Illuminate\Database\Eloquent\Model;
 class Series extends Model
 {
     use HasFactory;
+
     protected $fillable = ['nome'];
-    protected $with = ['season'];
+    protected $with = ['seasons']; 
 
-
-    public function season()
+    public function seasons() 
     {
         return $this->hasMany(Season::class, 'series_id');
     }
@@ -23,5 +23,5 @@ class Series extends Model
         self::addGlobalScope('ordered', function(Builder $queryBuilder){
             $queryBuilder->orderBy('nome');
         });
-    }  
+    }
 }
