@@ -18,5 +18,12 @@ class Episode extends Model
         return $this->belongsTo(Season::class);
     }
 
+    protected  static function booted() 
+    {   
+        self::addGlobalScope('order', function (Builder $builder) {
+            $builder->orderBy('number','asc');
+        });
+        
+    }
     
 }

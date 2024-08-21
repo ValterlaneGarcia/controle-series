@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title }} - Controle de Séries</title>
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <script src="{{ mix('js/app.js') }}"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-light bg-light">
@@ -13,7 +14,12 @@
             
             
             @auth
-            <a href="{{ route('logout')}}">Sair</a>
+            <form action="{{ route('logout')}}" method="post">
+                @csrf
+                <button class="btn btn-link">
+                    sair
+                </button>
+            </form>
             @endauth
             
             @guest
